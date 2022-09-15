@@ -5,3 +5,4 @@ lazygit
 spotify-tui/client.yml
 **.spotify_token_cache.json
 **resurrect
+tmux/plugins/
