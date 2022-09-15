@@ -2,7 +2,9 @@ btop
 gh
 htop
 lazygit
+mc
 spotify-tui/client.yml
 **.spotify_token_cache.json
 **resurrect
 tmux/plugins/
+nvim/lua/custom/chadrc.lua
