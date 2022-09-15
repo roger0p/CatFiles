@@ -3,4 +3,5 @@ gh
 htop
 lazygit
 spotify-tui/client.yml
+.spotify_token_cache
 **resurrect
