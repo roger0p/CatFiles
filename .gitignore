@@ -3,6 +3,7 @@ gh
 htop
 lazygit
 mc
+neofetch
 spotify-tui/client.yml
 **.spotify_token_cache.json
 **resurrect
