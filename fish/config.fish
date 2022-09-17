@@ -18,6 +18,10 @@ alias g git
 alias :q exit
 alias :so "exec fish"
 alias vim nvim
+alias ttd 'tt -csv >> ~/wpm.csv'
+alias tm tmux
+alias tma "tmux a"
+alias tmks "tmux kill-server"
 
 set -gx EDITOR nvim
 
