@@ -81,6 +81,13 @@ set -gx fish_pager_color_completion cdd6f4
 set -gx fish_pager_color_description 6c7086
 
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+set -l rustup_path $HOME/.cargo/bin
 
+set -q CARGO_HOME
+and set -l rustup_path $CARGO_HOME/bin
+
+test -d $rustup_path
+and contains -- $rustup_path $fish_user_paths
+or set fish_user_paths $fish_user_paths $rustup_path
 #Prompt
 oh-my-posh init fish --config "/home/linuxbrew/.linuxbrew/Cellar/oh-my-posh/9.1.0/themes/emodipt-extend.omp.json" | source
