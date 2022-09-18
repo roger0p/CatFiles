@@ -5,6 +5,7 @@ lazygit
 mc
 neofetch
 spotify-tui/client.yml
+ttyper
 **/fish_variables
 **.spotify_token_cache.json
 **resurrect
