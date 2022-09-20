@@ -10,9 +10,9 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # aliases
-alias ls "exa --icons -l"
-alias la "exa --icons -a"
-alias ll "exa --icons -la"
+alias ls "exa --icons --group-directories-first -l"
+alias la "exa --icons --group-directories-first -a"
+alias ll "exa --icons --group-directories-first -la"
 alias lla "exa -lT"
 alias g git
 alias :q exit
