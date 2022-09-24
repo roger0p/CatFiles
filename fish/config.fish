@@ -17,7 +17,7 @@ alias lla "exa -lT"
 alias g git
 alias :q exit
 alias :so "exec fish"
-alias vim nvim
+command -qv nvim && alias vim nvim
 alias ttd 'tt -csv >> ~/wpm.csv'
 alias tm tmux
 alias tma "tmux a"
@@ -94,4 +94,4 @@ test -d $rustup_path
 and contains -- $rustup_path $fish_user_paths
 or set fish_user_paths $fish_user_paths $rustup_path
 #Prompt
-oh-my-posh init fish --config "/home/linuxbrew/.linuxbrew/Cellar/oh-my-posh/9.1.0/themes/emodipt-extend.omp.json" | source
+oh-my-posh init fish --config "/home/linuxbrew/.linuxbrew/Cellar/oh-my-posh/current/themes/emodipt-extend.omp.json" | source

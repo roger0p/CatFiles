@@ -5,8 +5,7 @@
 # /_/   /___/_/ key-bindings.fish
 #
 # - $FZF_TMUX_OPTS
-# - $FZF_CTRL_T_COMMAND
-# - $FZF_CTRL_T_OPTS
+# - $FZF_CTRL_F_COMMAND
 # - $FZF_CTRL_R_OPTS
 # - $FZF_ALT_C_COMMAND
 # - $FZF_ALT_C_OPTS
@@ -25,13 +24,13 @@ function fzf_key_bindings
 
     # "-path \$dir'*/\\.*'" matches hidden files/folders inside $dir but not
     # $dir itself, even if hidden.
-    set -l FZF_CTRL_T_COMMAND "rg --files --hidden --glob '!.git/*'"
+    set -l FZF_CTRL_F_COMMAND "rg --files --hidden --glob '!.git/*'"
 
     test -n "$FZF_TMUX_HEIGHT"; or set FZF_TMUX_HEIGHT 40%
     begin
       set bat "bat --color=always --style=plain {} | head -500"
       set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --preview='$bat' --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
-      eval "$FZF_CTRL_T_COMMAND | "(__fzfcmd)' -m --query "'$fzf_query'"' | while read -l r; set result $result $r; end
+      eval "$FZF_CTRL_F_COMMAND | "(__fzfcmd)' -m --query "'$fzf_query'"' | while read -l r; set result $result $r; end
     end
     if [ -z "$result" ]
       commandline -f repaint
@@ -121,7 +120,7 @@ function fzf_key_bindings
 
     commandline -f repaint
   end
-
+    
   function __fzfcmd
     test -n "$FZF_TMUX"; or set FZF_TMUX 0
     test -n "$FZF_TMUX_HEIGHT"; or set FZF_TMUX_HEIGHT 40%
