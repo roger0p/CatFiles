@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# This is a script that initializes tailwindcss in a folder with user input
+
+if ! [ -x "$(command -v npm)" ]; then
+	echo 'Error: npm is not installed.'
+else
+	if [ -e "package.json" ]; then
+		npm i -D tailwindcss
+		npx tailwindcss init
+		sed -i '/content/d' tailwind.config.js
+		sed -i '2 a\
+    content: ["./*.html"],' tailwind.config.js
+		mkdir css
+		touch css/tailwind.css
+		touch css/main.css
+		touch index.html
+		echo "@tailwind base;" >>css/main.css && echo "@tailwind components;" >>css/main.css && echo "@tailwind utilities;" >>css/main.css
+		sed -i '/"scripts"/a \
+    "build:css": "tailwindcss -i ./css/main.css -o ./css/tailwind.css",' package.json
+		sed -i '/"scripts"/a \
+    "watch:css": "tailwindcss -i ./css/main.css -o ./css/tailwind.css --watch",' package.json
+		npm run build:css
+	else
+		npm init -y
+		npm i -D tailwindcss
+		npx tailwindcss init
+		sed -i '/content/d' tailwind.config.js
+		sed -i '2 a\
+    content: ["./*.html"],' tailwind.config.js
+		mkdir css
+		touch css/tailwind.css
+		touch css/main.css
+		touch index.html
+		echo "@tailwind base;" >>css/main.css && echo "@tailwind components;" >>css/main.css && echo "@tailwind utilities;" >>css/main.css
+		sed -i '/"scripts"/a \
+    "build": "tailwindcss -i ./css/main.css -o ./css/tailwind.css",' package.json
+		sed -i '/"scripts"/a \
+    "watch": "tailwindcss -i ./css/main.css -o ./css/tailwind.css --watch",' package.json
+		npm run build
+	fi
+fi
+
+read -p "Do you want to start watching tailwind? y/n: " Choice
+case "$Choice" in
+[y/Y])
+	exec npm run watch
+	;;
+[n/N])
+	echo "Tailwind Output Was Built :)"
+	;;
+*)
+	echo "Tailwind Output Was Built :)"
+	;;
+esac
