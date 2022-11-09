@@ -94,4 +94,9 @@ test -d $rustup_path
 and contains -- $rustup_path $fish_user_paths
 or set fish_user_paths $fish_user_paths $rustup_path
 #Prompt
-oh-my-posh init fish --config "/home/linuxbrew/.linuxbrew/Cellar/oh-my-posh/current/themes/emodipt-extend.omp.json" | source
+oh-my-posh init fish --config "/home/linuxbrew/.linuxbrew/Cellar/oh-my-posh/12.6.5/themes/emodipt-extend.omp.json" | source
+
+# pnpm
+set -gx PNPM_HOME "/home/roger/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
